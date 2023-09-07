@@ -13,5 +13,7 @@ dtb-$(CONFIG_ARCH_MXC) += \
 			  imx8mp-icore-starterkit.dtb \
 			  imx8mp-smarcore-xtouch2.dtb \
 			  imx93-icore-starterkit.dtb \
-			  imx93-icore-ctouch2.dtb
+			  imx93-icore-ctouch2.dtb \
+			  imx8qxp-icore-starterkit.dtb \
+			  imx8qxp-icore-ctouch2.dtb
 
