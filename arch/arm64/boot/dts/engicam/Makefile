@@ -9,6 +9,8 @@ dtb-$(CONFIG_ARCH_MXC) += \
 			  imx8mm-icore-ctouch2-rs232-yes7.dtb \
 			  imx8mm-icore-ctouch2-yes7.dtb \
 			  imx8mm-icore-ctouch2-yes10.dtb \
+			  imx8mp-icore-2e-net-phy.dtb \
+			  imx8mp-icore-2e-starterkit.dtb \
 			  imx8mp-icore-ctouch2.dtb \
 			  imx8mp-icore-starterkit.dtb \
 			  imx8mp-icore-fasteth-ctouch2.dtb \
