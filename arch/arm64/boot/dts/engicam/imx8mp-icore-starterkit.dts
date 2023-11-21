@@ -345,7 +345,7 @@
 		pinctrl-0 = <&pinctrl_pmic>;
 		interrupt-parent = <&gpio3>;
 		interrupts = <1 IRQ_TYPE_LEVEL_LOW>;
-		nxp,wdog_b-warm-reset;
+		engi,wdog_b-warm-reset;
 
 		regulators {
 			buck1: BUCK1 {
