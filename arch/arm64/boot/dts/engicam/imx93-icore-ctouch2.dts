@@ -9,7 +9,7 @@
 #include "../freescale/imx93.dtsi"
 
 / {
-	model = "NXP i.MX93 iCore - CTOUCH2.0";
+	model = "Engicam i.Core MX93 - C.Touch2.0";
 	compatible = "engi,imx93" ,"fsl,imx93";
 
 	aliases {

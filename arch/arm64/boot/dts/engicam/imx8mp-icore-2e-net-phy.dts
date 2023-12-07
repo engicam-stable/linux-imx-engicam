@@ -10,7 +10,7 @@
 
 
 / {
-	model = "Engicam i.Core i.MX8MPlus  Networking.Test (535-) Ethernet connection to switch";
+	model = "Engicam i.Core i.MX8MPlus  Dual Ethernet - Networking.Test (535-) Ethernet connection to switch";
 	compatible = "engi,icore-imx8mp", "fsl,imx8mp";
 
 	chosen {

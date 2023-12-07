@@ -8,7 +8,7 @@
 #include "imx8mp-icore-starterkit.dts"
 
 / {
-	model = "Engicam i.MX8MPlus Fasteth ";
+	model = "Engicam i.MX8MPlus Fasteth - Starterkit 2.1";
 
 
  	gpio_export {

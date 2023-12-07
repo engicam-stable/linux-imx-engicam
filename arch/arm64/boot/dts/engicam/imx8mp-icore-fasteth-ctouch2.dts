@@ -12,7 +12,7 @@
 #define SGTL_MCLK_ON_PWM4
 
 / {
-	model = "Engicam i.Core i.MX8MPlus Fasteth CTouch 2.0";
+	model = "Engicam i.Core i.MX8MPlus Fasteth - C.Touch 2.0";
 	compatible = "engi,imx8-icore", "fsl,imx8mp";
 
 	aliases {

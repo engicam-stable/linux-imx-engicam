@@ -11,7 +11,7 @@
 #include "../freescale/imx8mm.dtsi"
 
 / {
-	model = "Engicam i.Core MX8MM CTOUCH2.0";
+	model = "Engicam i.Core MX8MMini - C.Touch2.0";
 	compatible = "engi,icore-imx8mm", "fsl,imx8mm-evk", "fsl,imx8mm";
 
 	reserved-memory {

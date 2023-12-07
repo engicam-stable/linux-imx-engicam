@@ -10,7 +10,7 @@
 #include "../freescale/imx8mp.dtsi"
 
 / {
-	model = "Engicam i.Core i.MX8MPlus";
+	model = "Engicam i.Core i.MX8MPlus - Starterkit 2.1";
 	compatible = "engi,imx8-icore", "fsl,imx8mp";
 
 	chosen {
@@ -555,9 +555,7 @@
 &pcie {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_pcie>;
-	disable-gpio = <&gpio2 6 GPIO_ACTIVE_LOW>;
-	reset-gpio = <&gpio2 7 GPIO_ACTIVE_LOW>;
-	ext_osc = <1>;
+	reset-gpio = <&gpio1 7 GPIO_ACTIVE_LOW>;
 	clocks = <&clk IMX8MP_CLK_HSIO_ROOT>,
 		 <&clk IMX8MP_CLK_PCIE_AUX>,
 		 <&clk IMX8MP_CLK_HSIO_AXI>,

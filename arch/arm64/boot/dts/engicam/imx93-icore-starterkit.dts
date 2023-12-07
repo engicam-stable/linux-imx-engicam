@@ -9,7 +9,7 @@
 #include "../freescale/imx93.dtsi"
 
 / {
-	model = "NXP i.MX93 iCore - Starterkit";
+	model = "Engicam i.Core MX93 - Starterkit 2.1";
 	compatible = "engi,imx93" ,"fsl,imx93";
 
 	aliases {
