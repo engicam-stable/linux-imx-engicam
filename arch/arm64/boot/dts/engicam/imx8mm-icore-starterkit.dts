@@ -546,7 +546,7 @@
 	ov5640_mipi: ov5640_mipi@3c {
 		compatible = "ovti,ov5640_mipi";
 		reg = <0x3c>;
-		status = "disabled";
+		status = "okay";
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_csi_pwn>, <&pinctrl_csi_rst>;
 		clocks = <&clk IMX8MM_CLK_CLKO1>;
