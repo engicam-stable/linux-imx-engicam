@@ -28,6 +28,10 @@
 		stdout-path = &uart2;
 	};
 
+	aliases {
+		rtc1 = &snvs_rtc;
+	};
+
 	panel {
 		compatible = "panel-lvds";
 		backlight = <&backlight_lvds>;
@@ -511,8 +515,8 @@
 	pinctrl-0 = <&pinctrl_i2c2>;
 	status = "okay";
 
-	pcf8563: rtc@68 {
-		compatible = "pcf8563";
+	pcf8523: rtc@68 {
+		compatible = "nxp,pcf8523";
 		reg = <0x68>;
 	};
 
