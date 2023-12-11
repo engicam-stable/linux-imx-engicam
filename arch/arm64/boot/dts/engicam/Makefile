@@ -21,6 +21,7 @@ dtb-$(CONFIG_ARCH_MXC) += \
 			  imx8ulp-microgea-microdev-yes7.dtb \
 			  imx93-icore-starterkit.dtb \
 			  imx93-icore-ctouch2.dtb \
+			  imx93-icore-ctouch2-amp10.dtb \
 			  imx8qxp-icore-starterkit.dtb \
 			  imx8qxp-icore-ctouch2.dtb \
 			  imx8xq-smarcore-xtouch2.dtb

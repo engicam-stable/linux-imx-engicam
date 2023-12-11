@@ -620,8 +620,6 @@
 			MX93_PAD_ENET2_TD3__ENET1_RGMII_TD3             0x57e
 			MX93_PAD_ENET2_TXC__ENET1_RGMII_TXC             0x5fe
 			MX93_PAD_ENET2_TX_CTL__ENET1_RGMII_TX_CTL       0x57e
-
-			MX93_PAD_GPIO_IO05__GPIO2_IO05					0x57e // backlight
 		>;
 	};
 
