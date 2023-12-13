@@ -25,5 +25,6 @@ dtb-$(CONFIG_ARCH_MXC) += \
 			  imx93-icore-ctouch2-amp10.dtb \
 			  imx8qxp-icore-starterkit.dtb \
 			  imx8qxp-icore-ctouch2.dtb \
-			  imx8xq-smarcore-xtouch2.dtb
+			  imx8xq-smarcore-xtouch2.dtb \
+			  imx8xq-smarcore-multimedia-4k.dtb
 

@@ -10,7 +10,7 @@
 
 / {
 
-	model = "Engicam Smarcore MX8X Quad-Core X.Touch 2.0 (538A), display XTouch";
+	model = "Engicam Smarcore MX8X Quad-Core Multimedia 4K (456B), display AMP-10";
 	compatible = "fsl,imx8qxp";
 	
 	chosen {
@@ -196,50 +196,7 @@
 			no-map;
 		};
 	};
-	gpio_export {
-		compatible = "gpio-export";
-		#size-cells = <0>;
-		
-		GPIO_A {
-			gpio-export,name = "GPIO_A";
-			gpio-export,output = <0>;
-			gpio-export,direction_may_change;
-			gpios = <&lsio_gpio3 23 0>;
-		};
 
-		GPIO_B {
-			gpio-export,name = "GPIO_B";
-			gpio-export,output = <0>;
-			gpio-export,direction_may_change;
-			gpios = <&gpio0_mipi_csi0 1 0>;
-		};
-
-		GPIO_C {
-			gpio-export,name = "GPIO_C";
-			gpio-export,output = <0>;
-			gpio-export,direction_may_change;
-			gpios = <&lsio_gpio3 24 0>;
-		};
-
-		GPIO_D {
-			gpio-export,name = "GPIO_D";
-			gpio-export,output = <0>;
-			gpio-export,direction_may_change;
-			gpios = <&gpio0_mipi_csi0 0 0>;
-		};		
-
-		WAKE_ON_WAN {
-			gpio-export,name = "WAKE_ON_WAN";
-			gpio-export,output = <0>;
-			gpio-export,direction_may_change;
-			gpios = <&lsio_gpio3 9 0>;
-		};
-	};
-};
-
-&gpio0_mipi_csi0 {
-	pinctrl-names = "default";
-	pinctrl-0 = <&pinctrl_mipi_csi0_gpio>;
 };
 
 &cm40_i2c {
@@ -395,13 +352,18 @@
 &lpuart1 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_lpuart1>;
-	fsl,uart-has-rtscts;
 	status = "okay";
 };
 
 &lpuart2 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_lpuart2>;
+	status = "okay";
+};
+
+&lpuart3 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_lpuart3>;
 	status = "okay";
 };
 
@@ -670,12 +632,80 @@
 		status = "disabled";
 	};
 };
+//CHECK
+&mipi_csi_0 {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	/delete-property/virtual-channel;
+	status = "okay";
 
+	/* Camera 0  MIPI CSI-2 (CSIS0) */
+	port@0 {
+		reg = <0>;
+		mipi_csi0_ep: endpoint {
+			remote-endpoint = <&ov5640_mipi_ep>;
+			data-lanes = <1 2>;
+		};
+	};
+};
+
+&i2c_mipi_csi0 {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_i2c_mipi_csi0>;
+	clock-frequency = <100000>;
+	status = "okay";
+	
+	ov5640: ov5640@3c {
+		compatible = "ovti,ov5640";
+		reg = <0x3c>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_mipi_csi0>;
+		clocks = <&xtal24m>;
+		clock-names = "xclk";
+		csi_id = <0>;
+		powerdown-gpios = <&lsio_gpio3 7 GPIO_ACTIVE_LOW>;
+		reset-gpios = <&lsio_gpio3 8 GPIO_ACTIVE_HIGH>;
+		mclk = <24000000>;
+		mclk_source = <0>;
+		mipi_csi;
+		status = "okay";
+
+		port {
+			ov5640_mipi_ep: endpoint {
+				remote-endpoint = <&mipi_csi0_ep>;
+				data-lanes = <1 2>;
+				clock-lanes = <0>;
+			};
+		};
+	};
+};
 
 &irqsteer_csi0 {
 	status = "okay";
 };
 
+&cameradev {
+	status = "okay";
+};
+
+&parallel_csi {
+	status = "disabled";
+};
+
+&jpegdec {
+	status = "okay";
+};
+
+&jpegenc {
+	status = "okay";
+};
+
+&i2c_mipi_csi0 {
+	status = "disabled";
+};
+//CHECK
 &thermal_zones {
 	pmic-thermal0 {
 		polling-delay-passive = <250>;
@@ -722,16 +752,6 @@
 			IMX8QXP_QSPI0B_DATA3_LSIO_GPIO3_IO21	0x06000020 /* GPIO10 */			
 			IMX8QXP_MIPI_DSI1_I2C0_SCL_LSIO_GPIO1_IO29 0x06000020  /* LVDS_BKLTEN */
 			IMX8QXP_MIPI_DSI0_GPIO0_01_LSIO_GPIO1_IO28 0x06000020 /* LVDS_VDD_EN */
-			IMX8QXP_QSPI0B_SS0_B_LSIO_GPIO3_IO23 			0x06000020 /* GPIO A*/
-			IMX8QXP_QSPI0B_SS1_B_LSIO_GPIO3_IO24 			0x06000020 /* GPIO C*/
-			IMX8QXP_QSPI0A_DATA0_LSIO_GPIO3_IO09  0x06000020 /*WAKE ON WANN*/
-		>;
-	};
-
-	pinctrl_mipi_csi0_gpio: mipicsi0gpiogrp{
-		fsl,pins = <
-			IMX8QXP_MIPI_CSI0_GPIO0_00_MIPI_CSI0_GPIO0_IO00	0x00000021 /* GPIO B*/
-			IMX8QXP_MIPI_CSI0_GPIO0_01_MIPI_CSI0_GPIO0_IO01	0x00000021 /* GPIO D*/
 		>;
 	};
 
@@ -807,8 +827,6 @@
 		fsl,pins = <
 			IMX8QXP_UART1_TX_ADMA_UART1_TX		0x06000020
 			IMX8QXP_UART1_RX_ADMA_UART1_RX		0x06000020
-			IMX8QXP_UART1_RTS_B_ADMA_UART1_RTS_B	0x06000020
-			IMX8QXP_UART1_CTS_B_ADMA_UART1_CTS_B	0x06000020
 		>;
 	};
 
@@ -816,6 +834,13 @@
 		fsl,pins = <
 			IMX8QXP_UART2_TX_ADMA_UART2_TX		0x06000020
 			IMX8QXP_UART2_RX_ADMA_UART2_RX		0x06000020
+		>;
+	};
+
+	pinctrl_lpuart3: lpuart3grp {
+		fsl,pins = <
+			IMX8QXP_SCU_GPIO0_01_ADMA_UART3_TX	0x06000020
+			IMX8QXP_SCU_GPIO0_00_ADMA_UART3_RX	0x06000020
 		>;
 	};
 
@@ -906,6 +931,21 @@
 			IMX8QXP_PCIE_CTRL0_PERST_B_LSIO_GPIO4_IO00		0x06000021
 			IMX8QXP_PCIE_CTRL0_CLKREQ_B_LSIO_GPIO4_IO01	0x06000021
 			IMX8QXP_PCIE_CTRL0_WAKE_B_LSIO_GPIO4_IO02		0x06000021
+		>;
+	};
+
+	pinctrl_i2c_mipi_csi0: i2c_mipi_csi0 {
+		fsl,pins = <
+			IMX8QXP_MIPI_CSI0_I2C0_SCL_MIPI_CSI0_I2C0_SCL		0xc2000020
+			IMX8QXP_MIPI_CSI0_I2C0_SDA_MIPI_CSI0_I2C0_SDA		0xc2000020
+		>;
+	};	
+
+	pinctrl_mipi_csi0: mipi_csi0 {
+		fsl,pins = <
+			IMX8QXP_MIPI_CSI0_GPIO0_01_LSIO_GPIO3_IO07		0xC0000041
+			IMX8QXP_MIPI_CSI0_GPIO0_00_LSIO_GPIO3_IO08	0xC0000041
+			IMX8QXP_MIPI_CSI0_MCLK_OUT_MIPI_CSI0_ACM_MCLK_OUT	0xC0000041
 		>;
 	};
 };
