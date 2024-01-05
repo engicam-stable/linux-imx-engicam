@@ -811,6 +811,8 @@ dtb-$(CONFIG_SOC_IMX6UL) += \
 	imx6ull-phytec-tauri-nand.dtb \
 	imx6ull-tqma6ull2-mba6ulx.dtb \
 	imx6ull-tqma6ull2l-mba6ulx.dtb \
+	imx6ull-microgea-microdev.dtb \
+	imx6ull-microgea-microdev-lcd7.dtb \
 	imx6ull-microgea-microdev-rev3.dtb \
 	imx6ulz-14x14-evk.dtb \
 	imx6ulz-14x14-evk-btwifi.dtb \
