@@ -8,6 +8,10 @@
 #include <dt-bindings/usb/pd.h>
 #include "../freescale/imx93.dtsi"
 
+&ele_mu {
+	memory-region = <&ele_reserved>;
+};
+
 / {
 	model = "NXP i.MX93 iCore - Starterkit";
 	compatible = "engi,imx93" ,"fsl,imx93";
@@ -249,6 +253,12 @@
 
 		vdev1vring1: vdev1vring1@a4018000 {
 			reg = <0 0xa4018000 0 0x8000>;
+			no-map;
+		};
+
+		ele_reserved: ele-reserved@a4120000 {
+			compatible = "shared-dma-pool";
+			reg = <0 0xa4120000 0 0x100000>;
 			no-map;
 		};
 	};
