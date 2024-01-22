@@ -5,5 +5,7 @@ dtb-$(CONFIG_ARCH_MXC) += \
 			  imx8mp-icore-starterkit.dtb \
 			  imx8mp-icore-fasteth-ctouch2.dtb \
 			  imx8mp-icore-fasteth-ctouch2-amp10.dtb \
-			  imx8mp-icore-fasteth-starterkit.dtb
+			  imx8mp-icore-fasteth-starterkit.dtb \
+			  imx8mp-icore-2e-net-phy.dtb \
+			  imx8mp-icore-2e-starterkit.dtb
 
