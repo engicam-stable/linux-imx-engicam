@@ -1021,6 +1021,7 @@
 
 &mix_gpu_ml {
 	status = "okay";
+	/delete-property/ memory-region;
 };
 
 &mipi_csi_0 {
