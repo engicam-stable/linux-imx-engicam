@@ -52,13 +52,13 @@ struct imx_info {
 static const struct imx_info imx8ulp_info = {
 	.socdev = true,
 	.enable_ele_trng = false,
-	.reserved_dma_ranges = false,
+	.reserved_dma_ranges = true,
 };
 
 static const struct imx_info imx93_info = {
 	.socdev = false,
 	.enable_ele_trng = true,
-	.reserved_dma_ranges = false,
+	.reserved_dma_ranges = true,
 };
 
 static const struct of_device_id ele_mu_match[] = {
