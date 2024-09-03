@@ -292,6 +292,12 @@
 	};
 };
 
+&i2c_rpbus_0 {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	status = "okay";
+};
+
 &i2c_rpbus_1 {
 	#address-cells = <1>;
 	#size-cells = <0>;
