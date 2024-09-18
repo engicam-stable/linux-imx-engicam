@@ -227,6 +227,11 @@ config MAXLINEAR_GPHY
 	  Support for the Maxlinear GPY115, GPY211, GPY212, GPY215,
 	  GPY241, GPY245 PHYs.
 
+config MAXLINEAR_8611X_PHY
+	tristate "MaxLinear MXL86110 and MXL86111 PHYs"
+	help
+	  Supports the MXL86110 and MXL86111 PHYs.
+
 config MEDIATEK_GE_PHY
 	tristate "MediaTek Gigabit Ethernet PHYs"
 	help
