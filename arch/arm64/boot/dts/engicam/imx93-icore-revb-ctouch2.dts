@@ -19,6 +19,10 @@
 	pinctrl-0 = <&pinctrl_eqos>;
 	phy-mode = "rgmii-id";
 	phy-handle = <&ethphy1>;
+	snps,reset-gpio = <&gpio1 12 GPIO_ACTIVE_LOW>;
+	snps,reset-active-low;
+	/* Reset time is 20ms, 100ms */
+	snps,reset-delays-us = <0 20000 100000>;
 	status = "okay";
 
 	mdio {
@@ -51,6 +55,10 @@
 	phy-mode = "rgmii-id";
 	phy-handle = <&ethphy2>;
 	fsl,magic-packet;
+	snps,reset-gpio = <&gpio3 7 GPIO_ACTIVE_LOW>;
+	snps,reset-active-low;
+	/* Reset time is 20ms, 100ms */
+	snps,reset-delays-us = <0 20000 100000>;
 	status = "okay";
 
 	mdio {

@@ -19,6 +19,10 @@
 	pinctrl-0 = <&pinctrl_eqos>;
 	phy-mode = "rgmii-id";
 	phy-handle = <&ethphy1>;
+	snps,reset-gpio = <&gpio1 12 GPIO_ACTIVE_LOW>;
+	snps,reset-active-low;
+	/* Reset time is 20ms, 100ms */
+	snps,reset-delays-us = <0 20000 100000>;
 	status = "okay";
 
 	mdio {
@@ -50,6 +54,10 @@
 	pinctrl-0 = <&pinctrl_fec>;
 	phy-mode = "rgmii-id";
 	phy-handle = <&ethphy2>;
+	snps,reset-gpio = <&gpio3 7 GPIO_ACTIVE_LOW>;
+	snps,reset-active-low;
+	/* Reset time is 20ms, 100ms */
+	snps,reset-delays-us = <0 20000 100000>;	
 	fsl,magic-packet;
 	status = "okay";
 
@@ -92,6 +100,7 @@
 			MX93_PAD_ENET1_TD3__ENET_QOS_RGMII_TD3                  0x1e
 			MX93_PAD_ENET1_TXC__CCM_ENET_QOS_CLOCK_GENERATE_TX_CLK  0x1e
 			MX93_PAD_ENET1_TX_CTL__ENET_QOS_RGMII_TX_CTL            0x1e
+			MX93_PAD_SAI1_TXC__GPIO1_IO12							0x1e
 		>;
 	};
 
@@ -111,6 +120,7 @@
 			MX93_PAD_ENET2_TD3__ENET1_RGMII_TD3             0x1e
 			MX93_PAD_ENET2_TXC__ENET1_RGMII_TXC             0x1e
 			MX93_PAD_ENET2_TX_CTL__ENET1_RGMII_TX_CTL       0x1e
+			MX93_PAD_SD2_RESET_B__GPIO3_IO07       			0x1e
 		>;
 	};
 };
